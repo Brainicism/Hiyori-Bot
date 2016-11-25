@@ -13,6 +13,8 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 
+const greets = require('./lib/greets.js');
+
 app.set('port', (process.env.PORT || 5000));
 
 // Process application/x-www-form-urlencoded
@@ -24,7 +26,7 @@ app.use(bodyParser.json());
 // Index route
 app.get('/', function (req, res)
 {
-    res.send('Hello world, I am a chat bot');
+    res.send('Hello world, I am a messenger bot');
 });
 
 // for Facebook verification
@@ -52,7 +54,7 @@ app.post('/webhook/', function (req, res)
         let sender = event.sender.id;
         if (event.message && event.message.text)
         {
-            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
+            greets.getUserInfo(sender);
         }
     }
 
@@ -72,7 +74,8 @@ function sendTextMessage(sender, text)
         }
     };
 
-    request(reqParams, function(error, response, body) {
+    request(reqParams, function(error, response, body)
+    {
         if (error)
         {
             console.log('Error sending messages: ', error);
