@@ -8,11 +8,13 @@ Mainly server setup stuff here
 
 'use strict'
 
+require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 
+const bot = require('./lib/bot.js');
 const greets = require('./lib/greets.js');
 
 app.set('port', (process.env.PORT || 5000));
@@ -47,16 +49,20 @@ app.listen(app.get('port'), function()
 
 app.post('/webhook/', function (req, res)
 {
-    let messaging_events = req.body.entry[0].messaging;
-    for (let i = 0; i < messaging_events.length; i++)
+    var data = req.body;
+
+    data.entry.forEach(function(msgEntry)
     {
-        let event = req.body.entry[0].messaging[i];
-        let sender = event.sender.id;
-        if (event.message && event.message.text)
+        msgEntry.messaging.forEach(function(msgEvent)
         {
-            greets.getUserInfo(sender);
-        }
-    }
+            var sender = msgEvent.id;
+
+            if (msgEvent.message)
+            {
+                bot.performCommands(msgEvent);
+            }
+        });
+    });
 
     res.sendStatus(200);
 });
