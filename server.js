@@ -60,6 +60,10 @@ app.post('/webhook/', function (req, res)
             {
                 bot.performCommands(msgEvent);
             }
+            else if (msgEvent.postback)
+            {
+                greets.getStarted(msgEvent);
+            }
         });
     });
 
