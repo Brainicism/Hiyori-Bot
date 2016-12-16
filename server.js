@@ -13,9 +13,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
-
 const bot = require('./lib/bot.js');
-
 
 app.set('port', (process.env.PORT || 5000));
 
