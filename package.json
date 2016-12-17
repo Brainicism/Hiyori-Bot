@@ -14,10 +14,9 @@
         "body-parser": "^1.15.2",
         "express": "^4.14.0",
         "geocoder": "^0.2.2",
-        "lodash": "^4.17.2",
         "node-cron": "^1.1.2",
         "request": "^2.79.0"
     },
     "author": "Will-MingLun-Li",
-    "license": "ISC",
+    "license": "ISC"
 }
