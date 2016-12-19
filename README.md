@@ -27,7 +27,7 @@ A messenger bot written in node.js with a variety of commands
     ```
     git init
     git add .
-    git commit --message 'hello world'
+    git commit -m 'hello world'
     heroku create
     git push heroku master
     ```
@@ -36,30 +36,30 @@ A messenger bot written in node.js with a variety of commands
 
 ### Main
 
-**Weather**:
+* **Weather**: Returns the current weather of your city (If you gave your location).
 
-**Detailed Weather**:
+* **Detailed Weather**: Returns a much more detailed weather of your city.
 
-**Forecast**:
+* **Forecast**: Returns the condition and highest/lowest temperature of the day.
 
-**Inspire**:
+* **Inspire**: Returns a random funny/inspiration quote.
 
 
 ### Misc
 
-**Help**:
+* **Help**: Returns a list of commands that the bot can do.
 
-**Setting**:
+* **Setting**: Allows user to change the current notification/location.
 
-**Start Cron**:
+* **Start Cron**: Starts the cronjob (A message at 8 every morning).
 
-**Stop Cron**:
+* **Stop Cron**: Stops the cronjob.
 
 
 ### Other Random Stuff
 
-**Random**:
+* **Random**: Returns the 3 classic random values (Head/Tail, Random num from 0-100, and a random letter).
 
-**Epoch**:
+* **Epoch**: Returns the current time in UNIX timestamp.
 
-It will also respond if you greet it!
+It will also respond if you say hi or bye!
